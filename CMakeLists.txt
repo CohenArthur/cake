@@ -45,10 +45,13 @@ if (ENABLE_TESTS)
 
     enable_testing()
 
-    #add_subdirectory(tests EXCLUDE_FROM_ALL)
+    add_subdirectory(tests EXCLUDE_FROM_ALL)
+
+    add_test(NAME test_rules COMMAND test_rules)
 
     add_custom_target(check
         make; COMMAND ${CMAKE_CTEST_COMMAND} --verbose
         DEPENDS
+        test_rules
         )
 endif()

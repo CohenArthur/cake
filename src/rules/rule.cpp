@@ -2,35 +2,35 @@
 
 using namespace std;
 
-Rule::Rule() : r_name(""), r_deps("")
+Rule::RuleType::RuleType() : r_name(""), r_deps("")
 {
 }
 
-Rule::Rule(string r_name, string r_deps)
+Rule::RuleType::RuleType(string r_name, string r_deps)
     : r_name(r_name), r_deps(r_deps)
 {
 }
 
-Rule::~Rule()
+Rule::RuleType::~RuleType()
 {
 }
 
-string Rule::get_name()
+string Rule::RuleType::get_name()
 {
     return r_name;
 }
 
-string Rule::get_deps()
+string Rule::RuleType::get_deps()
 {
     return r_deps;
 }
 
-void Rule::set_name(string new_name)
+void Rule::RuleType::set_name(string new_name)
 {
     r_name = new_name;
 }
 
-void Rule::set_deps(string new_deps)
+void Rule::RuleType::set_deps(string new_deps)
 {
     r_deps = new_deps;
 }

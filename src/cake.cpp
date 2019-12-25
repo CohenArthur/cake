@@ -5,7 +5,7 @@ using namespace std;
 
 int main(void)
 {
-    Rule b_rule = Rule("coucou", "no_deps");
+    Rule::RuleType b_rule = Rule::from_line("name: deps");
 
     cout << b_rule.get_name() + " " << b_rule.get_deps() << endl;
 

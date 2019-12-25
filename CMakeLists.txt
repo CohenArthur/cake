@@ -29,11 +29,15 @@ add_compile_options(
     "-pedantic"
     )
 
-#include_directories(src/)
+include_directories(src/)
 
-#add_subdirectory(src)
+add_subdirectory(src)
 
 add_executable(cake src/cake.cpp)
+
+target_link_libraries(cake PRIVATE
+    rules
+    )
 
 if (ENABLE_TESTS)
     list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tests")

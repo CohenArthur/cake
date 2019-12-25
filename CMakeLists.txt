@@ -1,6 +1,9 @@
-project(cake LANGUAGES C++)
+cmake_minimum_required(VERSION 3.8)
+project(cake LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(CMAKE_CXX_COMPILER clang++)
 
 add_compile_definitions(
     _GNU_SOURCE
@@ -14,7 +17,7 @@ if (ENABLE_TESTS)
         "-fsanitize=address"
         )
 
-    add_link_opitons(
+    add_link_options(
         "-lasan"
         )
 endif()
@@ -26,9 +29,9 @@ add_compile_options(
     "-pedantic"
     )
 
-include_directories(src/)
+#include_directories(src/)
 
-add_subdirectory(src)
+#add_subdirectory(src)
 
 add_executable(cake src/cake.cpp)
 
@@ -38,7 +41,7 @@ if (ENABLE_TESTS)
 
     enable_testing()
 
-    add_subdirectory(tests EXCLUDE_FROM_ALL)
+    #add_subdirectory(tests EXCLUDE_FROM_ALL)
 
     add_custom_target(check
         make; COMMAND ${CMAKE_CTEST_COMMAND} --verbose

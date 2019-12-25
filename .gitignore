@@ -1,0 +1,7 @@
+tags
+
+*.o
+*.d
+*.so
+
+cake

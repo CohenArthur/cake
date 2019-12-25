@@ -1,2 +1,3 @@
 # cake
-Cake is a make clone written in C++ as a teaching project
+
+`cake` is a `GNU make` clone written in C++ as a teaching project

@@ -36,8 +36,7 @@ add_subdirectory(src)
 add_executable(cake src/cake.cpp)
 
 target_link_libraries(cake PRIVATE
-    rules
-    comment
+    parser
     )
 
 if (ENABLE_TESTS)

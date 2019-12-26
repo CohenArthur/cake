@@ -2,3 +2,4 @@
 add_subdirectory(rules)
 add_subdirectory(comment)
 add_subdirectory(variables)
+add_subdirectory(parser)

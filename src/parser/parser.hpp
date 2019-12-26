@@ -1,4 +1,4 @@
-#include <map>
+#include <unordered_map>
 #include <string>
 
 #include "rules/rule.hpp"
@@ -11,13 +11,14 @@
 class Parser
 {
 private:
-    std::map<std::string, std::string> p_rules;
-    std::map<std::string, std::string> p_vars;
+    std::unordered_map<std::string, std::string> p_rules;
+    std::unordered_map<std::string, std::string> p_vars;
 
 public:
     Parser();
+    Parser(std::string filename);
     ~Parser();
 
-    void add_rule(Rule r_to_add);
-    void add_variable(Variable v_to_add);
-}
+    void add_rule(std::string line);
+    void add_variable(std::string line);
+};

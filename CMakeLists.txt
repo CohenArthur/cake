@@ -37,6 +37,7 @@ add_executable(cake src/cake.cpp)
 
 target_link_libraries(cake PRIVATE
     rules
+    comment
     )
 
 if (ENABLE_TESTS)

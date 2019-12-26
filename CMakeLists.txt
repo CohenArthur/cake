@@ -27,6 +27,7 @@ add_compile_options(
     "-Wextra"
     "-Werror"
     "-pedantic"
+    "-std=c++17"
     )
 
 include_directories(src/)

@@ -21,7 +21,18 @@ public:
     Parser(std::string filename);
     ~Parser();
 
+    /**
+     * @brief Adds a new line, whatever the type, to the parser.
+     */
     void fill(std::string line);
+
+    /**
+     * @brief Adds a new rule to the parser.
+     */
     void add_rule(std::string line);
+
+    /**
+     * @brief Adds a new variable to the parser.
+     */
     void add_variable(std::string line);
 };

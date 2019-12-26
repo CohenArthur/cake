@@ -45,3 +45,13 @@ Test(parser, multirules)
     cr_assert_eq(new_p.p_rules["rule1"], "value1");
     cr_assert_eq(new_p.p_rules["rule2"], "value2");
 }
+
+Test(parser, rule_with_comment)
+{
+    Parser new_p = Parser();
+    new_p.fill("rule0:value0#This is a comment");
+    new_p.fill("rule1:value1#Holy #There are #Multiple #comments");
+
+    cr_assert_eq(new_p.p_rules["rule0"], "value0");
+    cr_assert_eq(new_p.p_rules["rule1"], "value1");
+}

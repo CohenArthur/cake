@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "parser.hpp"
+#include "comment/comment.hpp"
 
 using namespace std;
 
@@ -49,6 +50,8 @@ static enum line_types get_line_type(string line)
 
 void Parser::fill(string line)
 {
+    line = Comment::skip(line);
+
     switch (get_line_type(line)) {
         case L_RULE:
             add_rule(line);

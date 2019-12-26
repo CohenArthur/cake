@@ -14,16 +14,8 @@ namespace Rule {
             std::string r_deps;
 
         public:
-            /**
-             * @brief Builds a new rule with empty strings
-             */
             RuleType();
-
-            /**
-             * @brief Builds a new rule with the given strings
-             */
             RuleType(std::string r_name, std::string r_deps);
-
             ~RuleType();
 
             /**

@@ -21,11 +21,11 @@ string Expansion::expand(string line, string substr, string replace)
 
 string Expansion::expand_all(string line, string substr, string replace)
 {
-    string new_line;
+    string prev_line;
 
-    while (line != new_line) {
-        new_line = expand(line, substr, replace);
-        line = new_line;
+    while (prev_line != line) {
+        prev_line = line;
+        line = expand(line, substr, replace);
     }
 
     return line;

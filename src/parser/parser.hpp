@@ -13,8 +13,8 @@
 class Parser
 {
 public:
-    std::unordered_map<std::string, std::string> p_rules;
-    std::unordered_map<std::string, std::string> p_vars;
+    std::unordered_map<std::string, std::string> *p_rules;
+    std::unordered_map<std::string, std::string> *p_vars;
 
     Parser();
     Parser(std::ifstream file);

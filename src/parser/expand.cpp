@@ -2,12 +2,13 @@
 #include <iostream>
 
 #include "parser.hpp"
+#include "expansion/expansion.hpp"
 
 using namespace std;
 
 string find_expandable(string str)
 {
-    (void) str;
+    (void) str; //FIXME: (void)
     /**
      * There are three ways to expand variables in Makefiles:
      *      - $V
@@ -20,18 +21,24 @@ string find_expandable(string str)
      *
      * $VAR is the same as expanding $V. Without the parentheses or brackets,
      * only a single letter is considered as the name.
+     *
+     * $$ are simple expanded in this function's caller, handle_map(), since
+     * they are pretty basic and without condition.
      */
 
     return "";
 }
 
+static void handle_map(unordered_map<string, string> *map)
+{
+    for (auto& [key, value] : *map) {
+        (*map)[key] = Expansion::expand_all(value, "$$", "$");
+        cout << key << "=" << value << endl;
+    }
+}
+
 void Parser::expand_vars()
 {
-    for (const auto& [key, value] : p_vars) {
-        cout << key << "=" << value << endl;
-    }
-
-    for (const auto& [key, value] : p_rules) {
-        cout << key << "=" << value << endl;
-    }
+    handle_map(p_vars);
+    handle_map(p_rules);
 }

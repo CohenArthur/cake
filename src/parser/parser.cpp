@@ -16,24 +16,26 @@ enum line_types
 
 Parser::Parser()
 {
-    unordered_map<string, string> p_vars;
-    unordered_map<string, string> p_rules;
+    p_vars = new unordered_map<string, string>;
+    p_rules = new unordered_map<string, string>;
 }
 
 Parser::~Parser()
 {
+    delete p_vars;
+    delete p_rules;
 }
 
 void Parser::add_rule(string line)
 {
     Rule::RuleType r_to_add = Rule::from_line(line);
-    p_rules[r_to_add.get_name()] = r_to_add.get_deps();
+    (*p_rules)[r_to_add.get_name()] = r_to_add.get_deps();
 }
 
 void Parser::add_variable(string line)
 {
     Variable::VariableType v_to_add = Variable::from_line(line);
-    p_vars[v_to_add.get_name()] = v_to_add.get_value();
+    (*p_vars)[v_to_add.get_name()] = v_to_add.get_value();
 }
 
 static enum line_types get_line_type(string line)

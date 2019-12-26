@@ -49,11 +49,13 @@ if (ENABLE_TESTS)
 
     add_test(NAME test_rules COMMAND test_rules)
     add_test(NAME test_variables COMMAND test_variables)
+    add_test(NAME test_parser COMMAND test_parser)
 
     add_custom_target(check
         make; COMMAND ${CMAKE_CTEST_COMMAND} --verbose
         DEPENDS
         test_rules
         test_variables
+        test_parser
         )
 endif()

@@ -1,13 +1,13 @@
 #include <iostream>
-#include "rules/rule.hpp"
+#include "parser/parser.hpp"
 
 using namespace std;
 
 int main(void)
 {
-    Rule::RuleType b_rule = Rule::from_line("name: deps");
+    Parser m_parser = Parser("./tests/Makefile/basic");
 
-    cout << b_rule.get_name() + " " << b_rule.get_deps() << endl;
+    cout << m_parser.p_vars["VAR0"] << endl;
 
     return 0;
 }

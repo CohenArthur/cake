@@ -13,8 +13,10 @@ enum line_types
     L_UNKNOWN,
 };
 
-Parser::Parser() : p_rules(), p_vars()
+Parser::Parser()
 {
+    unordered_map<string, string> p_vars;
+    unordered_map<string, string> p_rules;
 }
 
 Parser::~Parser()
@@ -45,31 +47,39 @@ static enum line_types get_line_type(string line)
     return L_UNKNOWN;
 }
 
-Parser::Parser(string filename)
+void Parser::fill(string line)
 {
-    ifstream mfile;
-    string line;
-
-    mfile.open(filename);
-    Parser new_p = Parser();
-
-    while (getline(mfile, line)) {
-        switch (get_line_type(line)) {
+    switch (get_line_type(line)) {
         case L_RULE:
-            new_p.add_rule(line);
+            add_rule(line);
             break;
         case L_VAR:
-            new_p.add_rule(line);
+            add_variable(line);
             break;
         case L_COMMAND:
         case L_UNKNOWN:
             break;
-        }
     }
+}
 
-    //FIXME: Add exception throwing on error case
-    /*
-     * if (!mfile)
-     *      do_something();
-     */
+Parser::Parser(ifstream file)
+{
+    Parser new_p = Parser();
+    string line;
+
+    while (getline(file, line))
+        new_p.fill(line);
+}
+
+Parser::Parser(string filename)
+{
+    ifstream mfile;
+
+    mfile.open(filename);
+
+    Parser new_p = Parser();
+    string line;
+
+    while (getline(mfile, line))
+        new_p.fill(line);
 }

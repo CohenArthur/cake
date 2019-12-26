@@ -6,4 +6,5 @@ target_link_libraries(parser PRIVATE
     rules
     comment
     variables
+    expansion
     )

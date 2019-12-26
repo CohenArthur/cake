@@ -35,4 +35,9 @@ public:
      * @brief Adds a new variable to the parser.
      */
     void add_variable(std::string line);
+
+    /**
+     * @brief Expands the variables in the parser
+     */
+    void expand_vars();
 };

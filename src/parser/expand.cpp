@@ -82,7 +82,7 @@ static string value_expand_all(string value, Parser *p)
             break;
         case E_PARENTHESIS:
         case E_BRACKETS:
-            exp_key = value.substr(start_pos + 2, end_pos);
+            exp_key = value.substr(start_pos + 2, end_pos - 2);
             break;
         case E_ERROR:
             errx(2, "parsing error when expanding %s: missing ending character",
@@ -91,8 +91,8 @@ static string value_expand_all(string value, Parser *p)
             break;
         }
 
-        value = Expansion::expand_all(value, value.substr(start_pos, end_pos),
-                                      (*p->p_vars)[exp_key]);
+        value = Expansion::expand_all(
+            value, value.substr(start_pos, end_pos + 1), (*p->p_vars)[exp_key]);
     } while (exp != E_NONE);
 
     return value;

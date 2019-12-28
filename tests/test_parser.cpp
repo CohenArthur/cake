@@ -67,29 +67,28 @@ Test(parser, expansion_dollardollar)
     cr_assert_eq((*m_parser.p_vars)["VAR0"], "$?");
 }
 
-/*
-Test(parser, expansion_dollar_parentheses)
+int main(void)
+//Test(parser, expansion_dollar_parentheses)
 {
     Parser m_parser = Parser();
 
-    m_parser.fill("VAR0= Caribou");
-    m_parser.fill("VAR1= $(VAR0)");
+    m_parser.fill("VAR0=Caribou");
+    m_parser.fill("VAR1=$(VAR0)");
 
     m_parser.expand_vars();
 
-    cr_assert_eq(m_parser.p_vars["VAR1"], "Caribou");
+    cr_assert_eq((*m_parser.p_vars)["VAR1"], "Caribou");
 }
 
 Test(parser, expansion_dollar_parentheses_nested)
 {
     Parser m_parser = Parser();
 
-    m_parser.fill("VAR0= Caribou");
-    m_parser.fill("VAR1= $(VAR0)");
-    m_parser.fill("VAR2= $(VAR1)");
+    m_parser.fill("VAR0=Caribou");
+    m_parser.fill("VAR1=$(VAR0)");
+    m_parser.fill("VAR2=$(VAR1)");
 
     m_parser.expand_vars();
 
-    cr_assert_eq(m_parser.p_vars["VAR2"], "Caribou");
+    cr_assert_eq((*m_parser.p_vars)["VAR2"], "Caribou");
 }
-*/

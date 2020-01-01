@@ -6,6 +6,7 @@ add_library(parser STATIC
 target_link_libraries(parser PRIVATE
     rules
     comment
+    command
     variables
     expansion
     )

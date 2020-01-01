@@ -61,5 +61,6 @@ if (ENABLE_TESTS)
         test_variables
         test_parser
         test_expansion
+        test_command
         )
 endif()

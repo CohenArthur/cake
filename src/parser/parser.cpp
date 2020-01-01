@@ -3,6 +3,7 @@
 
 #include "parser.hpp"
 #include "comment/comment.hpp"
+#include "command/command.hpp"
 
 using namespace std;
 
@@ -64,6 +65,7 @@ void Parser::fill(string line)
             add_variable(line);
             break;
         case L_COMMAND:
+            line = Command::skip_tabs(line);
             p_last_rule.set_command(line);
         case L_UNKNOWN:
             break;

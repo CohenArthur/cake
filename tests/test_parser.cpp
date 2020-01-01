@@ -92,8 +92,7 @@ Test(parser, expansion_dollar_parentheses_nested)
     cr_assert_eq((*m_parser.p_vars)["VAR2"], "Caribou");
 }
 
-int main(void)
-//Test(parser, rule_with_command)
+Test(parser, rule_with_command)
 {
     Parser m_parser = Parser();
 

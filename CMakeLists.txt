@@ -38,11 +38,14 @@ add_executable(cake src/cake.cpp)
 
 target_link_libraries(cake PRIVATE
     parser
+    options
     )
 
 if (ENABLE_TESTS)
     list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tests")
     find_package(Criterion REQUIRED)
+
+    find_package(Boost REQUIRED)
 
     enable_testing()
 

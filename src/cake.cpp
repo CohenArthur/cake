@@ -1,9 +1,10 @@
 #include <iostream>
 #include "parser/parser.hpp"
+#include "options/options.hpp"
 
 using namespace std;
 
-int main(void)
+int main(int argc, char **argv)
 {
     Parser m_parser = Parser();
 
@@ -16,6 +17,8 @@ int main(void)
     m_parser.fill("rule2: $a");
 
     m_parser.expand_vars();
+
+    Options::fill(argc, argv);
 
     return 0;
 }

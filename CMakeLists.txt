@@ -52,6 +52,7 @@ if (ENABLE_TESTS)
     add_test(NAME test_variables COMMAND test_variables)
     add_test(NAME test_parser COMMAND test_parser)
     add_test(NAME test_expansion COMMAND test_expansion)
+    add_test(NAME test_command COMMAND test_command)
 
     add_custom_target(check
         make; COMMAND ${CMAKE_CTEST_COMMAND} --verbose

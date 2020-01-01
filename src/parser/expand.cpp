@@ -98,14 +98,16 @@ static string value_expand_all(string value, Parser *p)
     return value;
 }
 
-static void handle_map(unordered_map<string, string> *map, Parser *p)
-{
-    for (const auto& [key, value] : *map)
-        (*map)[key] = value_expand_all(value, p);
-}
-
 void Parser::expand_vars()
 {
-    handle_map(p_vars, this);
-    handle_map(p_rules, this);
+    for (const auto& [key, value] : *p_vars)
+        (*p_vars)[key] = value_expand_all(value, this);
+
+    for (const auto& [key, value] : *p_rules) {
+        Rule::RuleType to_expand = (*p_rules)[key];
+        value_expand_all(to_expand.r_comm, this);
+        value_expand_all(to_expand.r_deps, this);
+
+        (*p_rules)[key] = to_expand;
+    }
 }

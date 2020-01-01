@@ -9,11 +9,11 @@
 namespace Rule {
     class RuleType
     {
-        private:
+        public:
             std::string r_name;
             std::string r_deps;
+            std::string r_comm;
 
-        public:
             RuleType();
             RuleType(std::string r_name, std::string r_deps);
             ~RuleType();
@@ -37,6 +37,11 @@ namespace Rule {
              * @brief Sets the dependencies of a rule
              */
             void set_deps(std::string new_deps);
+
+            /**
+             * @brief Sets the command of a rule
+             */
+            void set_command(std::string new_command);
     };
 
     /**

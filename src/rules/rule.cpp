@@ -34,3 +34,8 @@ void Rule::RuleType::set_deps(string new_deps)
 {
     r_deps = new_deps;
 }
+
+void Rule::RuleType::set_command(string new_command)
+{
+    r_comm = new_command;
+}

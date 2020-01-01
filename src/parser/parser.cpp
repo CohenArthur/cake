@@ -17,7 +17,7 @@ enum line_types
 Parser::Parser()
 {
     p_vars = new unordered_map<string, string>;
-    p_rules = new unordered_map<string, string>;
+    p_rules = new unordered_map<string, Rule::RuleType>;
 }
 
 Parser::~Parser()
@@ -29,7 +29,9 @@ Parser::~Parser()
 void Parser::add_rule(string line)
 {
     Rule::RuleType r_to_add = Rule::from_line(line);
-    (*p_rules)[r_to_add.get_name()] = r_to_add.get_deps();
+    p_last_rule = r_to_add;
+
+    (*p_rules)[r_to_add.get_name()] = r_to_add;
 }
 
 void Parser::add_variable(string line)
@@ -62,6 +64,7 @@ void Parser::fill(string line)
             add_variable(line);
             break;
         case L_COMMAND:
+            p_last_rule.set_command(line);
         case L_UNKNOWN:
             break;
     }

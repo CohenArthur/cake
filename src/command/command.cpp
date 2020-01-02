@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string Command::skip_tabs(const string& command)
+string Command::skip_tabs(const string &command)
 {
     auto string_begin = command.find_first_not_of('\t');
 

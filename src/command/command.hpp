@@ -4,5 +4,5 @@
 
 namespace Command
 {
-    std::string skip_tabs(const std::string& command);
+    std::string skip_tabs(const std::string &command);
 }

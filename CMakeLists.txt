@@ -36,16 +36,17 @@ add_subdirectory(src)
 
 add_executable(cake src/cake.cpp)
 
-target_link_libraries(cake PRIVATE
+target_link_libraries(cake LINK_PUBLIC
     parser
     options
+    Boost::program_options
     )
 
 if (ENABLE_TESTS)
     list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tests")
     find_package(Criterion REQUIRED)
 
-    find_package(Boost REQUIRED)
+    find_package(Boost COMPONENTS program_options REQUIRED)
 
     enable_testing()
 

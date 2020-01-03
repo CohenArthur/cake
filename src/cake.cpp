@@ -18,10 +18,9 @@ int main(int argc, char **argv)
 
     m_parser.expand_vars();
 
-    (void) argc;
-    (void) argv;
-
     Options::fill(argc, argv);
+    auto recipes = Options::get_recipes();
+    auto filename = Options::get_file();
 
     return 0;
 }

@@ -14,7 +14,7 @@ class Parser
 {
 public:
     std::unordered_map<std::string, Rule::RuleType *> *p_rules;
-    std::unordered_map<std::string, std::string> *p_vars;
+    std::unordered_map<std::string, Variable::VariableType *> *p_vars;
 
     Rule::RuleType *p_last_rule;
 
@@ -51,5 +51,5 @@ public:
     /**
      * @brief Returns a variable from the parser based on its name
      */
-    std::string get_var(std::string varname);
+    Variable::VariableType *get_var(std::string varname);
 };

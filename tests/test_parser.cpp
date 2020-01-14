@@ -9,7 +9,7 @@ Test(parser, oneline)
     Parser new_p = Parser();
     new_p.fill("VAR=VALUE");
 
-    cr_assert_eq((*new_p.p_vars)["VAR"], "VALUE");
+    cr_assert_eq(new_p.get_var("VAR")->get_value(), "VALUE");
 }
 
 Test(parser, getrule)
@@ -25,7 +25,7 @@ Test(parser, getvar)
     Parser new_p = Parser();
     new_p.fill("VAR0=VALUE0");
 
-    cr_assert_eq(new_p.get_var("VAR0"), "VALUE0");
+    cr_assert_eq(new_p.get_var("VAR0")->get_value(), "VALUE0");
 }
 
 Test(parser, multivar)
@@ -35,9 +35,9 @@ Test(parser, multivar)
     new_p.fill("VAR1=VALUE1");
     new_p.fill("VAR2=VALUE2");
 
-    cr_assert_eq((*new_p.p_vars)["VAR0"], "VALUE0");
-    cr_assert_eq((*new_p.p_vars)["VAR1"], "VALUE1");
-    cr_assert_eq((*new_p.p_vars)["VAR2"], "VALUE2");
+    cr_assert_eq(new_p.get_var("VAR0")->get_value(), "VALUE0");
+    cr_assert_eq(new_p.get_var("VAR1")->get_value(), "VALUE1");
+    cr_assert_eq(new_p.get_var("VAR2")->get_value(), "VALUE2");
 }
 
 Test(parser, multidef)
@@ -47,7 +47,7 @@ Test(parser, multidef)
     new_p.fill("VAR0=VALUE2");
     new_p.fill("VAR0=VALUE0");
 
-    cr_assert_eq((*new_p.p_vars)["VAR0"], "VALUE0");
+    cr_assert_eq(new_p.get_var("VAR0")->get_value(), "VALUE0");
 }
 
 Test(parser, multirules)

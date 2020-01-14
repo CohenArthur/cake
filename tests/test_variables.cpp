@@ -4,7 +4,7 @@
 
 Test(variable, line_valid)
 {
-    Variable::VariableType valid = Variable::from_line("name= deps");
+    Variable::VariableType valid = Variable::VariableType("name= deps");
 
     cr_assert_eq(valid.get_name(), "name");
     cr_assert_eq(valid.get_value(), " deps");

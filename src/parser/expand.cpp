@@ -92,7 +92,7 @@ static string value_expand_all(string value, Parser *p)
         }
 
         value = Expansion::expand_all(
-            value, value.substr(start_pos, end_pos + 1), (*p->p_vars)[exp_key]);
+            value, value.substr(start_pos, end_pos + 1), p->get_var(exp_key)->get_value());
     } while (exp != E_NONE);
 
     return value;
@@ -101,7 +101,7 @@ static string value_expand_all(string value, Parser *p)
 void Parser::expand_vars()
 {
     for (const auto& [key, value] : *p_vars)
-        (*p_vars)[key] = value_expand_all(value, this);
+        (*p_vars)[key]->set_value(value_expand_all(value->get_value(), this));
 
     for (const auto& [key, value] : *p_rules) {
         Rule::RuleType *to_expand = (*p_rules)[key];

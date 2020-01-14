@@ -13,6 +13,7 @@ namespace Variable
     public:
         VariableType();
         VariableType(std::string v_name, std::string v_val);
+        VariableType(std::string line);
         ~VariableType();
 
         /**
@@ -24,11 +25,15 @@ namespace Variable
          * @brief Returns the variable value
          */
         std::string get_value();
+
+        /**
+         * @brief Sets the variable name
+         */
+        void set_name(std::string v_value);
+
+        /**
+         * @brief Sets the variable value
+         */
+        void set_value(std::string v_value);
     };
-
-
-    /**
-     * @brief Creates a variable from a given line
-     */
-    VariableType from_line(std::string line);
 }

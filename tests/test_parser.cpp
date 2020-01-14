@@ -12,6 +12,22 @@ Test(parser, oneline)
     cr_assert_eq((*new_p.p_vars)["VAR"], "VALUE");
 }
 
+Test(parser, getrule)
+{
+    Parser new_p = Parser();
+    new_p.fill("rule0:deps0");
+
+    cr_assert_eq(new_p.get_rule("rule0")->r_deps, "deps0");
+}
+
+Test(parser, getvar)
+{
+    Parser new_p = Parser();
+    new_p.fill("VAR0=VALUE0");
+
+    cr_assert_eq(new_p.get_var("VAR0"), "VALUE0");
+}
+
 Test(parser, multivar)
 {
     Parser new_p = Parser();
@@ -41,9 +57,9 @@ Test(parser, multirules)
     new_p.fill("rule1:value1");
     new_p.fill("rule2:value2");
 
-    cr_assert_eq((*new_p.p_rules)["rule0"].r_deps, "value0");
-    cr_assert_eq((*new_p.p_rules)["rule1"].r_deps, "value1");
-    cr_assert_eq((*new_p.p_rules)["rule2"].r_deps, "value2");
+    cr_assert_eq((*new_p.p_rules)["rule0"]->r_deps, "value0");
+    cr_assert_eq((*new_p.p_rules)["rule1"]->r_deps, "value1");
+    cr_assert_eq((*new_p.p_rules)["rule2"]->r_deps, "value2");
 }
 
 Test(parser, rule_with_comment)
@@ -52,10 +68,11 @@ Test(parser, rule_with_comment)
     new_p.fill("rule0:value0#This is a comment");
     new_p.fill("rule1:value1#Holy #There are #Multiple #comments");
 
-    cr_assert_eq((*new_p.p_rules)["rule0"].r_deps, "value0");
-    cr_assert_eq((*new_p.p_rules)["rule1"].r_deps, "value1");
+    cr_assert_eq((*new_p.p_rules)["rule0"]->r_deps, "value0");
+    cr_assert_eq((*new_p.p_rules)["rule1"]->r_deps, "value1");
 }
 
+/*
 Test(parser, expansion_dollardollar)
 {
     Parser m_parser = Parser();
@@ -91,6 +108,7 @@ Test(parser, expansion_dollar_parentheses_nested)
 
     cr_assert_eq((*m_parser.p_vars)["VAR2"], "Caribou");
 }
+*/
 
 Test(parser, rule_with_command)
 {
@@ -99,6 +117,6 @@ Test(parser, rule_with_command)
     m_parser.fill("name: deps");
     m_parser.fill("\techo a");
 
-    cr_assert_eq((*m_parser.p_rules)["name"].r_deps, " deps");
-    cr_assert_eq((*m_parser.p_rules)["name"].r_comm, "echo a");
+    cr_assert_eq((*m_parser.p_rules)["name"]->r_deps, " deps");
+    cr_assert_eq((*m_parser.p_rules)["name"]->r_comm, "echo a");
 }

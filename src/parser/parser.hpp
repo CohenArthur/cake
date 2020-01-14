@@ -13,7 +13,7 @@
 class Parser
 {
 public:
-    std::unordered_map<std::string, Rule::RuleType> *p_rules;
+    std::unordered_map<std::string, Rule::RuleType *> *p_rules;
     std::unordered_map<std::string, std::string> *p_vars;
 
     Rule::RuleType p_last_rule;
@@ -42,4 +42,14 @@ public:
      * @brief Expands the variables in the parser
      */
     void expand_vars();
+
+    /**
+     * @brief Returns a rule from the parser based on its name
+     */
+    Rule::RuleType *get_rule(std::string rulename);
+
+    /**
+     * @brief Returns a variable from the parser based on its name
+     */
+    std::string get_var(std::string varname);
 };

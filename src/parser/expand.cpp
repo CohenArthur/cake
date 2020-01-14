@@ -104,9 +104,9 @@ void Parser::expand_vars()
         (*p_vars)[key] = value_expand_all(value, this);
 
     for (const auto& [key, value] : *p_rules) {
-        Rule::RuleType to_expand = (*p_rules)[key];
-        value_expand_all(to_expand.r_comm, this);
-        value_expand_all(to_expand.r_deps, this);
+        Rule::RuleType *to_expand = (*p_rules)[key];
+        value_expand_all(to_expand->r_comm, this);
+        value_expand_all(to_expand->r_deps, this);
 
         (*p_rules)[key] = to_expand;
     }

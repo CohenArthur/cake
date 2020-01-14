@@ -39,7 +39,7 @@ add_executable(cake src/cake.cpp)
 target_link_libraries(cake LINK_PUBLIC
     parser
     options
-    Boost::program_options
+    boost_program_options
     )
 
 if (ENABLE_TESTS)

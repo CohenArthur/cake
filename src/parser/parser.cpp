@@ -29,10 +29,10 @@ Parser::~Parser()
 
 void Parser::add_rule(string line)
 {
-    Rule::RuleType r_to_add = Rule::from_line(line);
+    Rule::RuleType *r_to_add = new Rule::RuleType(line);
     p_last_rule = r_to_add;
 
-    (*p_rules)[r_to_add.get_name()] = &r_to_add;
+    (*p_rules)[r_to_add->get_name()] = r_to_add;
 }
 
 void Parser::add_variable(string line)
@@ -66,7 +66,7 @@ void Parser::fill(string line)
             break;
         case L_COMMAND:
             line = Command::skip_tabs(line);
-            p_last_rule.set_command(line);
+            p_last_rule->set_command(line);
         case L_UNKNOWN:
             break;
     }

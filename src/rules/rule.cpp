@@ -11,6 +11,14 @@ Rule::RuleType::RuleType(string r_name, string r_deps)
 {
 }
 
+Rule::RuleType::RuleType(string line)
+{
+    size_t colon_pos = line.find(':');
+
+    r_name = line.substr(0, colon_pos);
+    r_deps = line.substr(colon_pos + 1, line.size());
+}
+
 Rule::RuleType::~RuleType()
 {
 }

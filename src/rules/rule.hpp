@@ -16,6 +16,7 @@ namespace Rule {
 
             RuleType();
             RuleType(std::string r_name, std::string r_deps);
+            RuleType(std::string line);
             ~RuleType();
 
             /**
@@ -43,9 +44,4 @@ namespace Rule {
              */
             void set_command(std::string new_command);
     };
-
-    /**
-     * @brief Builds a rule from a given line.
-     */
-    RuleType from_line(std::string line);
 }

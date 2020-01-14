@@ -16,7 +16,7 @@ public:
     std::unordered_map<std::string, Rule::RuleType *> *p_rules;
     std::unordered_map<std::string, std::string> *p_vars;
 
-    Rule::RuleType p_last_rule;
+    Rule::RuleType *p_last_rule;
 
     Parser();
     Parser(std::ifstream file);
